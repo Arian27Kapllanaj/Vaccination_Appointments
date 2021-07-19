@@ -1,15 +1,16 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('register') }}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add Citizen</h1>
+    <br>
+    
+    <form method="POST" action="{{ route('register') }}">
             @csrf
 
             <!-- Name -->
@@ -72,8 +73,6 @@
                 <div class="col-sm-6">
                     <select class="form-control" id="user_type" name="user_type" required focus>
                         <option value="" disabled selected>Select Role</option>
-                        <option value="Admin">Admin</option>
-                        <option value="Nurse">Nurse</option>
                         <option value="Citizen">Citizen</option>
                     </select>
                 </div>
@@ -103,5 +102,5 @@
                 </x-button>
             </div>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+</body>
+</html>
