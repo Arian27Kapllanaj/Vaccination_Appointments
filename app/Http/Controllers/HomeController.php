@@ -9,8 +9,10 @@ use App\Models\User;
 class HomeController extends Controller
 {
     function home() {
+
             $user = User::find(Auth::id());
             return view('home', ['role' => $user->user_type]);
+
     }
 
     function addCitizen() {

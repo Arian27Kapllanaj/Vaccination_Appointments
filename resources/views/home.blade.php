@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
     <h1>{{ $role }}</h1>
     @if($role == 'Citizen' || $role == 'Nurse' || $role == 'Admin')
     <h1>Citizen</h1>
@@ -16,6 +17,7 @@
     <h1>Nurse</h1>
     @else($role == 'Admin')
     <h1>Admin</h1>
+
     @endif
 
 </body>
