@@ -9,12 +9,9 @@
 <body>
     <h1>Add Citizen</h1>
     <br>
-    
-<<<<<<< HEAD
+
     <form method="POST" action="/addcitizen">
-=======
-    <form method="POST" action="{{ route('register') }}">
->>>>>>> eb4300fe21ae6f33155009c9e1ebadf0e919702a
+
             @csrf
 
             <!-- Name -->

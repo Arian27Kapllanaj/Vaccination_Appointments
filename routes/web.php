@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\BookController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +27,8 @@ Route::get('/dashboard', function () {
 
 Route::get('/home', [HomeController::class, 'home'])->middleware(['auth']);
 Route::get('/add', [HomeController::class, 'addCitizen'])->middleware(['auth']);
+
+Route::get('citizen/book',[PagesController::class, 'book']);
+Route::post('citizen/add/appointment',[BookController::class, 'addAppointment']);
 
 require __DIR__.'/auth.php';
