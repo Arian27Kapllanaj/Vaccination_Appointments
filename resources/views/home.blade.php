@@ -1,4 +1,5 @@
 @extends('layouts.design')
+@section('content')
 <head>
 
     <title>Document</title>
@@ -17,3 +18,5 @@
     @if($role == 'Admin')
     <h1>Admin</h1>
     @endif
+
+@endsection

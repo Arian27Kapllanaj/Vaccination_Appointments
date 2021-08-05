@@ -13,6 +13,7 @@ class BookController extends Controller
         $booking->vac_center_id = $request->get('vaccination_center');
         $booking->vac_id = $request->get('vaccination_id');
         $booking->date_of_shot = $request->get('date_of_shot');
+        $booking->time = $request->get('time');
         $booking->shot_number = $request->get('shot_number');
         $booking->isDone = 0;
         $booking->isCancelled = 0;

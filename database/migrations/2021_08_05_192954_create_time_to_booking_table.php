@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVaccinationCenterTable extends Migration
+class CreateTimeToBookingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateVaccinationCenterTable extends Migration
      */
     public function up()
     {
-        Schema::create('vaccination_center', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('address');
-            $table->integer('rooms');
+        Schema::table('booking', function (Blueprint $table) {
+            $table->time('time')->after('date_of_shot');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateVaccinationCenterTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vaccination_center');
+        Schema::table('booking', function (Blueprint $table) {
+            //
+        });
     }
 }
