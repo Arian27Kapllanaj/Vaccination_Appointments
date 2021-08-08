@@ -30,5 +30,6 @@ Route::get('/add', [HomeController::class, 'addCitizen'])->middleware(['auth']);
 
 Route::get('citizen/book',[PagesController::class, 'book']);
 Route::post('citizen/add/appointment',[BookController::class, 'addAppointment']);
+Route::get('admin/all/scheuled_appointments',[PagesController::class, 'allAppointments']);
 
 require __DIR__.'/auth.php';

@@ -15,4 +15,8 @@ class PagesController extends Controller
         $vaccinations = Vaccinations::all();
         return view('citizen.book')->with(['centers' => $center])->with(['vaccination' => $vaccinations]);
     }
+
+    function allAppointments() {
+        return view('admin.scheduled_appointments');
+    }
 }
