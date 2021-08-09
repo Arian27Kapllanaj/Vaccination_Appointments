@@ -17,7 +17,7 @@
     @endif
     @if($role == 'Admin')
     <h1>Admin</h1>
-    <button><a href="/admin/appointments">All scheduled appointments</a></button>
+    <button><a href="admin/all/scheduled_appointments">All scheduled appointments</a></button>
     @endif
 
 @endsection
