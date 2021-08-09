@@ -25,7 +25,7 @@ class PagesController extends Controller
             ->join('vaccination_center','booking_has_vaccination_center.vaccination_center_id', '=', 'vaccination_center.id')
             ->join('vaccination_center_has_vaccination', 'vaccination_center.id', '=', 'vaccination_center_has_vaccination.vaccination_center_id')
             ->join('vaccination', 'vaccination_center_has_vaccination.vaccination_id', '=', 'vaccination.id')
-            ->select('users.name as name', 'users.surname', 'booking.*', 'vaccination_center.name as vac_center_name')
+            ->select('users.name as name', 'users.surname', 'booking.*', 'vaccination_center.name as vac_center_name', 'vaccination.name as vac_name')
             ->get();
 
         return view('admin.scheduled_appointments')->with(['all' => $all]);

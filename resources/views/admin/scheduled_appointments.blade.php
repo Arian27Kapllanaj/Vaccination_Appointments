@@ -20,11 +20,11 @@
 <div class="design">
     <p>Name: {{ $booking->name }}</p>
     <p>Surname: {{ $booking->surname }}</p>
-    <p>Vaccination Center: {{ $booking->vac_center_id }}</p>
     <p>Date: {{ $booking->date_of_shot }}</p>
     <p>Time: {{ $booking->time }}</p>
-    <p>Shot number: {{ $booking->shot_number }}</p>
     <p>Vaccination Center: {{ $booking->vac_center_name }}</p>
+    <p>Vaccine type: {{ $booking->vac_name }}</p>
+    <p>Shot number: {{ $booking->shot_number }}</p>
 </div>
 <br>
 @endforeach
