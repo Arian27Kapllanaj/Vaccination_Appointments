@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\BookingHasVaccinationCenters;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -20,6 +21,13 @@ class BookController extends Controller
         $booking->user_id = $user->id;
 
         $booking->save();
+
+        $bookingHasVaccination = new BookingHasVaccinationCenters();
+        //here below I want to get the auto increment id
+        $bookingHasVaccination->booking_id = $booking->id;
+        $bookingHasVaccination->vac_center_id = $request->get('vaccination_center');
+        $booking->save();
+
         return redirect('/home');
     }
 }

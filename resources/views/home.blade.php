@@ -14,6 +14,7 @@
     @endif
     @if($role == 'Nurse' || $role == 'Admin')
     <h1>Nurse</h1>
+    <button><a href="/nurse/add/citizen">Add Citizen</a></button>
     @endif
     @if($role == 'Admin')
     <h1>Admin</h1>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\addCitizenController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagesController;
@@ -26,10 +27,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/home', [HomeController::class, 'home'])->middleware(['auth']);
-Route::get('/add', [HomeController::class, 'addCitizen'])->middleware(['auth']);
+Route::get('/nurse/add/citizen', [HomeController::class, 'addCitizen'])->middleware(['auth']);
+Route::post('/add/citizen', [addCitizenController::class, 'addCitizen']);
 
 Route::get('citizen/book',[PagesController::class, 'book']);
 Route::post('citizen/add/appointment',[BookController::class, 'addAppointment']);
+
 Route::get('admin/all/scheduled_appointments',[PagesController::class, 'allAppointments']);
 
 require __DIR__.'/auth.php';
