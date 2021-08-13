@@ -30,4 +30,23 @@ class PagesController extends Controller
 
         return view('admin.scheduled_appointments')->with(['all' => $all]);
     }
+
+    
+    function addCitizen() {
+        return view('nurse.add_citizen');
+    }
+
+    function allCitizensAppointments() {
+        $all = DB::table('users')
+        ->join('booking', 'users.id', '=', 'booking.user_id')
+        ->join('booking_has_vaccination_center', 'booking.id', '=', 'booking_has_vaccination_center.booking_id')
+        ->join('vaccination_center','booking_.vac_center_id', '=', 'vaccination_center.id')
+        ->join('vaccination_center_has_vaccination', 'vaccination_center.id', '=', 'vaccination_center_has_vaccination.vaccination_center_id')
+        ->join('vaccination', 'vaccination_center_has_vaccination.vaccination_id', '=', 'vaccination.id')
+        ->select('users.name as name', 'users.surname', 'booking.*', 'vaccination_center.name as vac_center_name', 'vaccination.name as vac_name')
+        ->get();
+
+        return view('nurse.all_appointments')->with(['all' => $all]);
+    }
+
 }

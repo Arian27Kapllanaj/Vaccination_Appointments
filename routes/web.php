@@ -27,12 +27,16 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/home', [HomeController::class, 'home'])->middleware(['auth']);
-Route::get('/nurse/add/citizen', [HomeController::class, 'addCitizen'])->middleware(['auth']);
+Route::get('/nurse/add/citizen', [PagesController::class, 'addCitizen'])->middleware(['auth']);
 Route::post('/add/citizen', [addCitizenController::class, 'addCitizen']);
 
 Route::get('citizen/book',[PagesController::class, 'book']);
 Route::post('citizen/add/appointment',[BookController::class, 'addAppointment']);
 
 Route::get('admin/all/scheduled_appointments',[PagesController::class, 'allAppointments']);
+Route::get('nurse/all/citizens/appointments',[PagesController::class, 'allCitizensAppointments']);
+
+//logout
+Route::get('/logout', '\App\Http\Controllers\Auth\AuthenticatedSessionController@destroy');
 
 require __DIR__.'/auth.php';

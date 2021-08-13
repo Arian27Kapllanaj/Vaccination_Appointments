@@ -14,9 +14,4 @@ class HomeController extends Controller
             return view('home', ['role' => $user->user_type]);
 
     }
-
-    function addCitizen() {
-        return view('add_citizen');
-    }
-
 }

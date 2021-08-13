@@ -21,12 +21,10 @@ class BookController extends Controller
         $booking->user_id = $user->id;
 
         $booking->save();
-
         $bookingHasVaccination = new BookingHasVaccinationCenters();
-        //here below I want to get the auto increment id
         $bookingHasVaccination->booking_id = $booking->id;
-        $bookingHasVaccination->vac_center_id = $request->get('vaccination_center');
-        $booking->save();
+        $bookingHasVaccination->vaccination_center_id = $request->get('vaccination_center');
+        $bookingHasVaccination->save();
 
         return redirect('/home');
     }

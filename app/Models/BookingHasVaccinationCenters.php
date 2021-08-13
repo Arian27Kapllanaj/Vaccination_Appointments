@@ -10,4 +10,6 @@ class BookingHasVaccinationCenters extends Model
     use HasFactory;
 
     protected $table = 'booking_has_vaccination_center';
+
+    public $timestamps = false;
 }
