@@ -22,6 +22,10 @@
             color: black;
         }
 
+        #btn {
+            width: 100px;
+        }
+
     </style>
 </head>
 <h1>All Appointments</h1>
@@ -37,9 +41,9 @@
     <p>Shot number: {{ $booking->shot_number }}</p>
     <span>
         <div class="btn">
-            <button type="button" class="btn btn-success"><a href="" class="buttons">Confirmed</a></button>
-            <button type="button" class="btn btn-warning"><a href="" class="buttons">Missed</a></button>
-            <button type="button" class="btn btn-danger"><a href="" class="buttons">Cancelled</a></button>
+            <button type="button" class="btn btn-success" id="btn"><a href="/confirm/{{$booking->id}}" class="buttons">Confirmed</a></button>
+            <button type="button" class="btn btn-warning" id="btn"><a href="/missed/{{$booking->id}}" class="buttons">Missed</a></button>
+            <button type="button" class="btn btn-danger" id="btn"><a href="/cancelled/{{$booking->id}}" class="buttons">Cancelled</a></button>
         </div>
     </span>
 </div>

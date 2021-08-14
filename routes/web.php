@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\addCitizenController;
+use App\Http\Controllers\AppointmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagesController;
@@ -38,5 +39,10 @@ Route::get('nurse/all/citizens/appointments',[PagesController::class, 'allCitize
 
 //logout
 Route::get('/logout', '\App\Http\Controllers\Auth\AuthenticatedSessionController@destroy');
+
+//Nurse
+Route::get('/confirm/{id}', [AppointmentController::class, 'confirmed']);
+Route::get('/cancelled/{id}', [AppointmentController::class, 'cancelled']);
+Route::get('/missed/{id}', [AppointmentController::class, 'missed']);
 
 require __DIR__.'/auth.php';
