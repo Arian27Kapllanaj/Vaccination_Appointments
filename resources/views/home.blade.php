@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home | Vaccination Appointments</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <title>Document</title>
+
 </head>
 
 <body>
@@ -15,8 +15,8 @@
     <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:200px;" id="mySidebar">
         <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
         @if($role == 'Citizen' || $role == 'Nurse' || $role == 'Admin')
-        <a href="/citizen/book" class="w3-bar-item w3-button">Make an appointment</a>
-        <a href="#" class="w3-bar-item w3-button">View certificate</a>
+        <a href="/citizen/book" class="w3-bar-item w3-button" id="citizen">Make an appointment</a>
+        <a href="#" class="w3-bar-item w3-button" id="citizen">View certificate</a>
         @endif
         @if($role == 'Nurse' || $role == 'Admin')
         <a href="/nurse/add/citizen" class="w3-bar-item w3-button">Add Citizen</a>
@@ -24,8 +24,8 @@
         @endif
         @if($role == 'Admin')
         <a href="admin/all/scheduled_appointments" class="w3-bar-item w3-button">All Scheduled Appointments</a>
-        <a href="#" class="w3-bar-item w3-button">View all cancelled appointments</a>
-        <a href="#" class="w3-bar-item w3-button">View all missed appointments</a>
+        <a href="admin/all/cancelled" class="w3-bar-item w3-button">View all cancelled appointments</a>
+        <a href="admin/all/missed" class="w3-bar-item w3-button">View all missed appointments</a>
         <a href="#" class="w3-bar-item w3-button">Manage users</a>
         <a href="#" class="w3-bar-item w3-button">Add a post</a>
         <a href="#" class="w3-bar-item w3-button">Add a Vaccination Center</a>

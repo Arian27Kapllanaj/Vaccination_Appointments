@@ -45,4 +45,8 @@ Route::get('/confirm/{id}', [AppointmentController::class, 'confirmed']);
 Route::get('/cancelled/{id}', [AppointmentController::class, 'cancelled']);
 Route::get('/missed/{id}', [AppointmentController::class, 'missed']);
 
+//Admin
+Route::get('admin/all/missed', [PagesController::class, 'allMissed']);
+Route::get('admin/all/cancelled', [PagesController::class, 'allCancelled']);
+
 require __DIR__.'/auth.php';
