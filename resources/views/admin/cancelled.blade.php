@@ -14,10 +14,10 @@
     </style>
 </head>
 
-<h1>All missed appointments</h1>
+<h1>All cancelled appointments</h1>
 
 @if($all->isEmpty())
-<h1>There are not any missed appointments</h1>
+<h1>There are not any cancelled appointments</h1>
 @else
 
 @foreach($all as $booking)

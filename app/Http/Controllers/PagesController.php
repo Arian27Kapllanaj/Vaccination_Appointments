@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Booking;
 use App\Models\VaccinationCenters;
 use App\Models\Vaccinations;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
@@ -15,6 +13,7 @@ class PagesController extends Controller
 
         $center = VaccinationCenters::all();
         $vaccinations = Vaccinations::all();
+
         return view('citizen.book')->with(['centers' => $center])->with(['vaccination' => $vaccinations]);
     }
 

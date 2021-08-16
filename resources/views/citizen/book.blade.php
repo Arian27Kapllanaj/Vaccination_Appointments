@@ -18,7 +18,7 @@
     <br>
     <p>NOTE: Every Vaccination center has different vaccine type</p>
     <label for="vaccination_id">Vaccination</label>
-    <!-- Later I should show vaccine that are in the specific vac_center-->
+    <!-- Later on I should show vaccine that are in the specific vac_center-->
     <select class="form-control" id="vaccination_id" name="vaccination_id" required focus>
         <option value="" disabled selected>Select Vaccine type</option>
         @foreach($vaccination as $vac)
@@ -27,7 +27,6 @@
     </select>
     <br>
     <label for="date_of_shot">Date</label>
-    <!-- Later I should make select input, getting vac_center from db-->
     <input id="date_of_shot" name="date_of_shot" type="date" required>
     <br><br>
 
