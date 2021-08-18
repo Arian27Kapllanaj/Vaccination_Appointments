@@ -6,6 +6,8 @@ use App\Models\VaccinationCenters;
 use App\Models\Vaccinations;
 use Illuminate\Support\Facades\DB;
 
+use function Ramsey\Uuid\v1;
+
 class PagesController extends Controller
 {
     function book()
@@ -83,5 +85,13 @@ class PagesController extends Controller
         ->get();
 
         return view('admin.cancelled')->with(['all' => $all]);
+    }
+
+    function addVaccinationCenter() {
+        return view('admin.add_vac_center');
+    }
+
+    function addVaccine() {
+        return view('admin.add_vaccine');
     }
 }

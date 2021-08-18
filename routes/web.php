@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\addCitizenController;
+use App\Http\Controllers\AddController;
 use App\Http\Controllers\AppointmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -48,5 +49,9 @@ Route::get('/missed/{id}', [AppointmentController::class, 'missed']);
 //Admin
 Route::get('admin/all/missed', [PagesController::class, 'allMissed']);
 Route::get('admin/all/cancelled', [PagesController::class, 'allCancelled']);
+Route::get('/admin/add/vaccination/center', [PagesController::class, 'addVaccinationCenter']);
+Route::post('/add/vac_center', [AddController::class, 'addVaccinationCenter']);
+Route::get('/admin/add/vaccine', [PagesController::class, 'addVaccine']);
+Route::post('/add/vaccine', [AddController::class, 'addVaccine']);
 
 require __DIR__.'/auth.php';

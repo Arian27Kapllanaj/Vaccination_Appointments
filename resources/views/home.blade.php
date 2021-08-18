@@ -28,7 +28,8 @@
         <a href="admin/all/missed" class="w3-bar-item w3-button">View all missed appointments</a>
         <a href="#" class="w3-bar-item w3-button">Manage users</a>
         <a href="#" class="w3-bar-item w3-button">Add a post</a>
-        <a href="#" class="w3-bar-item w3-button">Add a Vaccination Center</a>
+        <a href="/admin/add/vaccination/center" class="w3-bar-item w3-button">Add a Vaccination Center</a>
+        <a href="/admin/add/vaccine" class="w3-bar-item w3-button">Add a Vaccine</a>
         @endif
         <a href="{{ url('/logout') }}" class="w3-bar-item w3-button">Log out</a>
     </div>
@@ -42,7 +43,13 @@
         </div>
 
         <div class="w3-container">
-            
+            <div class="container">
+                @if(!$vaccine -> isEmpty())
+                <h2>{{ $vac_date }}</h2>
+                @else
+                <h2>You do not have any appointment, you can book and appointment or if you have done all the shots, you can see your certificate</h2>
+                @endif
+            </div>
         </div>
 
     </div>

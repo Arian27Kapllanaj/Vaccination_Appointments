@@ -10,4 +10,5 @@ class VaccinationCenters extends Model
     use HasFactory;
 
     protected $table = 'vaccination_center';
+    public $timestamps = false;
 }

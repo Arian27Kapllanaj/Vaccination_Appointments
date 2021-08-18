@@ -19,8 +19,6 @@ class BookController extends Controller
             die();
         } else {
 
-
-
             $user = auth()->user();
 
             $request->date_of_birth = auth()->user()->birthday;
@@ -39,9 +37,9 @@ class BookController extends Controller
                 die();
             }
 
-            $findUser = Booking::where('user_id', '=', Auth::id());
+            $findUser = Booking::where('user_id', '=', Auth::id())->count();
 
-            if ($findUser == true) {
+            if ($findUser > 1) {
                 $result = DB::table('booking')->select('date_of_shot')->where('user_id', '=', Auth::id())->get();
                 $date_of_shot = $result[0]->date_of_shot;
 

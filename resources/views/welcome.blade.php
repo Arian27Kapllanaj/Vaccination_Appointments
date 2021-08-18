@@ -1,8 +1,7 @@
-@extends('layouts.design')
-@section('content')
-
 <head>
     <title>Laravel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 
     <style>
         body {
@@ -46,31 +45,31 @@
         }
     </style>
 </head>
-<br>
-<div class="text-center" style="font-family: Lucida Handwriting; color: white;">
-    <h1>Vaccination Appointments</h1>
-</div>
-<br>
-<div class="content">
-    <h2>Welcome!</h2>
+<div class="container">
     <br>
-    <p>This is a website to help citizens to book <br>an appointment to do their vaccination and <br>choose the vaccine type that they want.
-        <br>It is a friendly user-interface webiste and very easy to navigate.<br>You can login or register, and book an appointment right now.
-        <br>You can choose the place and the time to do the vaccine.
-        <br>After confirmation from the Nurses, you can get the vaccination certification.<br>
-        This website is builded with Laravel 8 and Bootstrap 5.
-    </p>
-    <br><br>
-    @if (Route::has('login'))
-    @auth
-    <button type="button" class="btn btn-success" id="buttons"><a href="{{ url('/home') }}" style="color: white; text-decoration: none;">Home</a></button>
-    @else
-    <button type="button" class="btn btn-secondary" id="buttons"><a href="{{ route('login') }}" style="color: white; text-decoration: none;">Log in</a></button>
-    @if (Route::has('register'))
-    <button type="button" class="btn btn-primary" id="buttons"><a href="{{ route('register') }}" style="color: white; text-decoration: none;">Register</a></button>
-    @endif
-    @endauth
-    @endif
+    <div class="text-center" style="font-family: Lucida Handwriting; color: white;">
+        <h1>Vaccination Appointments</h1>
+    </div>
+    <br>
+    <div class="content">
+        <h2>Welcome!</h2>
+        <br>
+        <p>This is a website to help citizens to book <br>an appointment to do their vaccination and <br>choose the vaccine type that they want.
+            <br>It is a friendly user-interface webiste and very easy to navigate.<br>You can login or register, and book an appointment right now.
+            <br>You can choose the place and the time to do the vaccine.
+            <br>After confirmation from the Nurses, you can get the vaccination certification.<br>
+            This website is builded with Laravel 8 and Bootstrap 5.
+        </p>
+        <br><br>
+        @if (Route::has('login'))
+        @auth
+        <button type="button" class="btn btn-success" id="buttons"><a href="{{ url('/home') }}" style="color: white; text-decoration: none;">Home</a></button>
+        @else
+        <button type="button" class="btn btn-secondary" id="buttons"><a href="{{ route('login') }}" style="color: white; text-decoration: none;">Log in</a></button>
+        @if (Route::has('register'))
+        <button type="button" class="btn btn-primary" id="buttons"><a href="{{ route('register') }}" style="color: white; text-decoration: none;">Register</a></button>
+        @endif
+        @endauth
+        @endif
+    </div>
 </div>
-
-@endsection
