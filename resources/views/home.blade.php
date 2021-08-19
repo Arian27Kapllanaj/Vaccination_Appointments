@@ -15,8 +15,9 @@
     <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:200px;" id="mySidebar">
         <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
         @if($role == 'Citizen' || $role == 'Nurse' || $role == 'Admin')
-        <a href="/citizen/book" class="w3-bar-item w3-button" id="citizen">Make an appointment</a>
-        <a href="#" class="w3-bar-item w3-button" id="citizen">View certificate</a>
+        <a href="/citizen/book" class="w3-bar-item w3-button">Make an appointment</a>
+        <a href="citizen/view/vaccination/date" class="w3-bar-item w3-button">Check vaccination date</a>
+        <a href="#" class="w3-bar-item w3-button">View certificate</a>
         @endif
         @if($role == 'Nurse' || $role == 'Admin')
         <a href="/nurse/add/citizen" class="w3-bar-item w3-button">Add Citizen</a>
@@ -43,13 +44,7 @@
         </div>
 
         <div class="w3-container">
-            <div class="container">
-                @if(!$vaccine -> isEmpty())
-                <h2>{{ $vac_date }}</h2>
-                @else
-                <h2>You do not have any appointment, you can book and appointment or if you have done all the shots, you can see your certificate</h2>
-                @endif
-            </div>
+            
         </div>
 
     </div>

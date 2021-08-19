@@ -29,24 +29,25 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/home', [HomeController::class, 'home'])->middleware(['auth']);
-Route::get('/nurse/add/citizen', [PagesController::class, 'addCitizen'])->middleware(['auth']);
 Route::post('/add/citizen', [addCitizenController::class, 'addCitizen']);
 
+//Citizen
 Route::get('citizen/book',[PagesController::class, 'book']);
 Route::post('citizen/add/appointment',[BookController::class, 'addAppointment']);
-
-Route::get('admin/all/scheduled_appointments',[PagesController::class, 'allAppointments']);
-Route::get('nurse/all/citizens/appointments',[PagesController::class, 'allCitizensAppointments']);
+Route::get('citizen/view/vaccination/date', [PagesController::class, 'viewDate']);
 
 //logout
 Route::get('/logout', '\App\Http\Controllers\Auth\AuthenticatedSessionController@destroy');
 
 //Nurse
+Route::get('/nurse/add/citizen', [PagesController::class, 'addCitizen'])->middleware(['auth']);
+Route::get('nurse/all/citizens/appointments',[PagesController::class, 'allCitizensAppointments']);
 Route::get('/confirm/{id}', [AppointmentController::class, 'confirmed']);
 Route::get('/cancelled/{id}', [AppointmentController::class, 'cancelled']);
 Route::get('/missed/{id}', [AppointmentController::class, 'missed']);
 
 //Admin
+Route::get('admin/all/scheduled_appointments',[PagesController::class, 'allAppointments']);
 Route::get('admin/all/missed', [PagesController::class, 'allMissed']);
 Route::get('admin/all/cancelled', [PagesController::class, 'allCancelled']);
 Route::get('/admin/add/vaccination/center', [PagesController::class, 'addVaccinationCenter']);

@@ -19,63 +19,70 @@ class BookController extends Controller
             die();
         } else {
 
-            $user = auth()->user();
-
-            $request->date_of_birth = auth()->user()->birthday;
-            $age = Carbon::parse($request->date_of_birth)->diff(Carbon::now())->y;
-
-            $result = DB::table('vaccination')
-                ->select('min_age')
-                ->where('id', '=', $request->get('vaccination_id'))
-                ->get();
-
-            $min_age = $result[0]->min_age;
-
-            if ($age < $min_age) {
-                //Later on I can add a new page that looks better to show this message
-                echo "You are younger than " . $min_age . " years old";
+            $confirm = DB::table('booking')->select('id')->where('user_id', '=', Auth::id(), 'and', 'isDone', '=', '0')->count();
+            if ($confirm > 0) {
+                echo "You have not made your first appointment yet";
                 die();
-            }
+            } else {
 
-            $findUser = Booking::where('user_id', '=', Auth::id())->count();
+                $user = auth()->user();
 
-            if ($findUser > 1) {
-                $result = DB::table('booking')->select('date_of_shot')->where('user_id', '=', Auth::id())->get();
-                $date_of_shot = $result[0]->date_of_shot;
+                $request->date_of_birth = auth()->user()->birthday;
+                $age = Carbon::parse($request->date_of_birth)->diff(Carbon::now())->y;
 
-                $diff = Carbon::parse($date_of_shot)->diffInDays(Carbon::now());
+                $result = DB::table('vaccination')
+                    ->select('min_age')
+                    ->where('id', '=', $request->get('vaccination_id'))
+                    ->get();
 
+                $min_age = $result[0]->min_age;
 
-                $result = DB::table('vaccination')->select('interval_shots')->where('id', '=', $request->get('vaccination_id'))->get();
-                $interval = $result[0]->interval_shots;
-
-                if ($diff < $interval) {
+                if ($age < $min_age) {
                     //Later on I can add a new page that looks better to show this message
-                    $difference = $interval - $diff;
-                    echo "You need to wait " . $difference . " more days to complete the interval between shots.";
-
-                    echo " The interval between shots is: " . $interval;
+                    echo "You are younger than " . $min_age . " years old";
                     die();
                 }
-            } else {
-                $booking = new Booking();
-                $booking->vac_center_id = $request->get('vaccination_center');
-                $booking->vac_id = $request->get('vaccination_id');
-                $booking->date_of_shot = $request->get('date_of_shot');
-                $booking->time = $request->get('time');
-                $booking->shot_number = $request->get('shot_number');
-                $booking->isDone = 0;
-                $booking->isCancelled = 0;
-                $booking->user_id = $user->id;
 
-                $booking->save();
-                $bookingHasVaccination = new BookingHasVaccinationCenters();
-                $bookingHasVaccination->booking_id = $booking->id;
-                $bookingHasVaccination->vaccination_center_id = $request->get('vaccination_center');
-                $bookingHasVaccination->save();
+                $findUser = Booking::where('user_id', '=', Auth::id())->count();
+
+                if ($findUser > 1) {
+                    $result = DB::table('booking')->select('date_of_shot')->where('user_id', '=', Auth::id())->get();
+                    $date_of_shot = $result[0]->date_of_shot;
+
+                    $diff = Carbon::parse($date_of_shot)->diffInDays(Carbon::now());
+
+
+                    $result = DB::table('vaccination')->select('interval_shots')->where('id', '=', $request->get('vaccination_id'))->get();
+                    $interval = $result[0]->interval_shots;
+
+                    if ($diff < $interval) {
+                        //Later on I can add a new page that looks better to show this message
+                        $difference = $interval - $diff;
+                        echo "You need to wait " . $difference . " more days to complete the interval between shots.";
+
+                        echo " The interval between shots is: " . $interval;
+                        die();
+                    }
+                } else {
+                    $booking = new Booking();
+                    $booking->vac_center_id = $request->get('vaccination_center');
+                    $booking->vac_id = $request->get('vaccination_id');
+                    $booking->date_of_shot = $request->get('date_of_shot');
+                    $booking->time = $request->get('time');
+                    $booking->shot_number = $request->get('shot_number');
+                    $booking->isDone = 0;
+                    $booking->isCancelled = 0;
+                    $booking->user_id = $user->id;
+
+                    $booking->save();
+                    $bookingHasVaccination = new BookingHasVaccinationCenters();
+                    $bookingHasVaccination->booking_id = $booking->id;
+                    $bookingHasVaccination->vaccination_center_id = $request->get('vaccination_center');
+                    $bookingHasVaccination->save();
+                }
+
+                return redirect('/home');
             }
-
-            return redirect('/home');
         }
     }
 }
