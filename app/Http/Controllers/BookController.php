@@ -13,7 +13,7 @@ class BookController extends Controller
 {
     function addAppointment(Request $request)
     {
-        $count = DB::table('booking')->select('id')->where('user_id', '=', Auth::id())->count();
+        $count = DB::table('booking')->select('id')->where('user_id', '=', Auth::id())->where('isDone', '=', '1')->count();
         if ($count > 1) {
             echo "You have made all the shots of the vaccination";
             die();
@@ -47,6 +47,12 @@ class BookController extends Controller
             die();
         }
 
+        $check = DB::table('booking')->select('id')->where('user_id', '=', Auth::id())->where('isDOne', '=', '0')->count();
+        if($check > 0) {
+            echo "Your last appointment is not confirmed in our system, you need to wait the day when your appointment is, if this is not the case then you should wait the nurse to confirm it.";
+            die();
+        }
+
         $findUser = Booking::where('user_id', '=', Auth::id())->where('isDone', '=', '1')->count();
 
         if ($findUser > 0) {
@@ -67,6 +73,7 @@ class BookController extends Controller
                 die();
             }
         }
+
         $booking = new Booking();
         $booking->vac_center_id = $request->get('vaccination_center');
         $booking->vac_id = $request->get('vaccination_id');

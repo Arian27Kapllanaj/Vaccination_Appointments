@@ -7,8 +7,6 @@ use App\Models\Vaccinations;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-use function Ramsey\Uuid\v1;
-
 class PagesController extends Controller
 {
     function book()
@@ -120,5 +118,16 @@ class PagesController extends Controller
             return view('citizen.date')->with(['date' => $date]);
         } else
             return view('citizen.date')->with(['date' => $result]);
+    }
+
+    function certificate() {
+        $certificate = DB::table('certificate')
+        ->join('users', 'certificate.user_id', '=', 'users.id')
+        ->join('vaccination', 'certificate.vac_id', '=', 'vaccination.id')
+        ->select('certificate.id as id', 'users.name', 'users.surname', 'users.birthday', 'vaccination.name as vac_name', 'certificate.last_shot_date as date')
+        ->where('certificate.user_id', '=', Auth::id())
+        ->get();
+
+        return view('citizen.certificate')->with(['info' => $certificate]);
     }
 }

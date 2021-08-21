@@ -136,7 +136,7 @@
     <select class="form-control" id="shot_number" name="shot_number" required focus>
         <option value="" disabled selected>Shot number</option>
         <option value="1" selected>1</option>
-        <option value="1" selected>2</option>
+        <option value="2" selected>2</option>
     </select>
     <br>
     <button type="submit">Submit</button>

@@ -17,7 +17,7 @@
         @if($role == 'Citizen' || $role == 'Nurse' || $role == 'Admin')
         <a href="/citizen/book" class="w3-bar-item w3-button">Make an appointment</a>
         <a href="citizen/view/vaccination/date" class="w3-bar-item w3-button">Check vaccination date</a>
-        <a href="#" class="w3-bar-item w3-button">View certificate</a>
+        <a href="citizen/certificate" class="w3-bar-item w3-button">View certificate</a>
         @endif
         @if($role == 'Nurse' || $role == 'Admin')
         <a href="/nurse/add/citizen" class="w3-bar-item w3-button">Add Citizen</a>

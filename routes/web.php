@@ -35,6 +35,7 @@ Route::post('/add/citizen', [addCitizenController::class, 'addCitizen']);
 Route::get('citizen/book',[PagesController::class, 'book']);
 Route::post('citizen/add/appointment',[BookController::class, 'addAppointment']);
 Route::get('citizen/view/vaccination/date', [PagesController::class, 'viewDate']);
+Route::get('citizen/certificate', [PagesController::class, 'certificate']);
 
 //logout
 Route::get('/logout', '\App\Http\Controllers\Auth\AuthenticatedSessionController@destroy');
