@@ -27,10 +27,12 @@
         <a href="admin/all/scheduled_appointments" class="w3-bar-item w3-button">All Scheduled Appointments</a>
         <a href="admin/all/cancelled" class="w3-bar-item w3-button">View all cancelled appointments</a>
         <a href="admin/all/missed" class="w3-bar-item w3-button">View all missed appointments</a>
+        <a href="admin/all/citizens/without/appointments" class="w3-bar-item w3-button">View all citizens without appointments</a>
         <a href="#" class="w3-bar-item w3-button">Manage users</a>
         <a href="#" class="w3-bar-item w3-button">Add a post</a>
         <a href="/admin/add/vaccination/center" class="w3-bar-item w3-button">Add a Vaccination Center</a>
         <a href="/admin/add/vaccine" class="w3-bar-item w3-button">Add a Vaccine</a>
+        <a href="#" class="w3-bar-item w3-button">Add Vaccine to a Vaccination Center</a>
         @endif
         <a href="{{ url('/logout') }}" class="w3-bar-item w3-button">Log out</a>
     </div>

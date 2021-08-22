@@ -55,5 +55,6 @@ Route::get('/admin/add/vaccination/center', [PagesController::class, 'addVaccina
 Route::post('/add/vac_center', [AddController::class, 'addVaccinationCenter']);
 Route::get('/admin/add/vaccine', [PagesController::class, 'addVaccine']);
 Route::post('/add/vaccine', [AddController::class, 'addVaccine']);
+Route::get('/admin/all/citizens/without/appointments', [PagesController::class, 'withoutAppointments']);
 
 require __DIR__.'/auth.php';

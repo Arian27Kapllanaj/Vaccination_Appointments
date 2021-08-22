@@ -7,6 +7,8 @@ use App\Models\Vaccinations;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+use function Ramsey\Uuid\v1;
+
 class PagesController extends Controller
 {
     function book()
@@ -129,5 +131,17 @@ class PagesController extends Controller
         ->get();
 
         return view('citizen.certificate')->with(['info' => $certificate]);
+    }
+
+    function withoutAppointments() {
+
+        $all = DB::table('users')
+        ->select('name', 'surname', 'birthday')
+        ->leftJoin('booking', 'booking.user_id', '=', 'users.id')
+        ->where('booking.user_id', '=', null)
+        ->orderBy('users.birthday', 'asc')
+        ->get();
+
+        return view('admin.citizens_without_appointments')->with(['all' => $all]);
     }
 }
