@@ -1,7 +1,7 @@
 <head>
     <title>Laravel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 
     <style>
         body {
@@ -47,13 +47,10 @@
 </head>
 <div class="container">
     <br>
-    <div class="text-center" style="font-family: Lucida Handwriting; color: white;">
-        <h1>Vaccination Appointments</h1>
-    </div>
-    <br>
     <div class="content">
-        <h2>Welcome!</h2>
-        <br>
+    <h2>Welcome!</h2>
+        <img src="images/logo.png" alt="" width="300vm">
+        <br><br>
         <p>This is a website to help citizens to book <br>an appointment to do their vaccination and <br>choose the vaccine type that they want.
             <br>It is a friendly user-interface webiste and very easy to navigate.<br>You can login or register, and book an appointment right now.
             <br>You can choose the place and the time to do the vaccine.

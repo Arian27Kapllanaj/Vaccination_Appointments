@@ -1,62 +1,47 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Vaccination Appointments
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Technologies:
+### Laravel 8 
+### Boostrap 5 
+### HTML5 
+### CSS 
+### Javascript
+### MySQL
 
-## About Laravel
+## Vaccination Appointments is a web application where you can make an appointment to do the vaccination. This website has 3 roles as citizen, nurse and admin. As a nurse and admin you can do the same things as a citizen, the only difference is that as a nurse and admin you have more things that you can do. As a nurse you do not have the same options an admin has. Below you can see the list of things you can do for every role.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Things you can do:
+### 1. You can login and register
+### As a Citizen
+### 2. You can make an appointment
+### 3. Check the vaccination date
+### 4. After vaccination shots are being confirmed by the nurses, you can see the vaccination certificate
+### As a Nurse
+### 5. You can see all the appointments
+### 6. You can make an appointmets status as: Confirmed, Missed, Cancelled
+### 7. Add a citizen
+### As an Admin
+### 8. You can view all cancelled appointments
+### 9. You can view all missed appointments
+### 10.You can view all citizens that have not make any appointments
+### 11. Manage Users. You can promote and depromote a user.
+### 12. Add a post
+### 13. Add a vaccination center
+### 14. Add a vaccine
+### 15. Add vaccine to a vaccination center
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### My goal in building this website was to learn the new features and code syntax of Laravel 8 while I already have knowldege in Laravel 6. Also learning Bootstrap 5. So I was a Full-Stack Web Developer in this project, using Laravel as a backend framework and Bootstrap as a frontend framework.Also I learned Agile methodology using Trello and I found a great way to manage the project from start to end.By doing this website I am  more confident using Laravel 8 and Bootstrap 5 and I will always use Agile methodology in my upcoming projects. 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## How to download this project:
+### First of all, you should have downloaded GitBash if you are a windows user. Secondly, you need to download the composer 
+### Download link: https://getcomposer.org/
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## After downloading these you can continue with the steps below:
+### Clone the project
+### Run composer install
+### Create a database
+### Copy .env.example to .env
+### Update .env with your database credentials
+### Migrate the DB: php artisan migrate
+### Run: php artisan key:generate
+### Run: php artisan serve or open it with XAMP(Windows User), or MAMP(MacOS User).
