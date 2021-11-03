@@ -27,10 +27,9 @@ class PagesController extends Controller
             ->join('booking', 'users.id', '=', 'booking.user_id')
             ->join('booking_has_vaccination_center', 'booking.id', '=', 'booking_has_vaccination_center.booking_id')
             ->join('vaccination_center', 'booking_has_vaccination_center.vaccination_center_id', '=', 'vaccination_center.id')
-            ->join('vaccination_center_has_vaccination', 'vaccination_center.id', '=', 'vaccination_center_has_vaccination.vaccination_center_id')
-            ->join('vaccination', 'vaccination_center_has_vaccination.vaccination_id', '=', 'vaccination.id')
+            ->join('vaccination', 'booking.vac_id', '=', 'vaccination.id')
             ->select('users.name as name', 'users.surname', 'booking.*', 'vaccination_center.name as vac_center_name', 'vaccination.name as vac_name')
-            ->get();
+            ->count();
 
         return view('admin.scheduled_appointments')->with(['all' => $all]);
     }
@@ -47,8 +46,7 @@ class PagesController extends Controller
             ->join('booking', 'users.id', '=', 'booking.user_id')
             ->join('booking_has_vaccination_center', 'booking.id', '=', 'booking_has_vaccination_center.booking_id')
             ->join('vaccination_center', 'booking_has_vaccination_center.vaccination_center_id', '=', 'vaccination_center.id')
-            ->join('vaccination_center_has_vaccination', 'vaccination_center.id', '=', 'vaccination_center_has_vaccination.vaccination_center_id')
-            ->join('vaccination', 'vaccination_center_has_vaccination.vaccination_id', '=', 'vaccination.id')
+            ->join('vaccination', 'booking.vac_id', '=', 'vaccination.id')
             ->select('users.name as name', 'users.surname', 'booking.*', 'vaccination_center.name as vac_center_name', 'vaccination.name as vac_name')
             ->where('isDone', '=', '0')
             ->where('isMissed', '=', '0')
@@ -66,8 +64,7 @@ class PagesController extends Controller
             ->join('booking', 'users.id', '=', 'booking.user_id')
             ->join('booking_has_vaccination_center', 'booking.id', '=', 'booking_has_vaccination_center.booking_id')
             ->join('vaccination_center', 'booking_has_vaccination_center.vaccination_center_id', '=', 'vaccination_center.id')
-            ->join('vaccination_center_has_vaccination', 'vaccination_center.id', '=', 'vaccination_center_has_vaccination.vaccination_center_id')
-            ->join('vaccination', 'vaccination_center_has_vaccination.vaccination_id', '=', 'vaccination.id')
+            ->join('vaccination', 'booking.vac_id', '=', 'vaccination.id')
             ->select('users.name as name', 'users.surname', 'booking.*', 'vaccination_center.name as vac_center_name', 'vaccination.name as vac_name')
             ->where('isMissed', '=', '1')
             ->get();
@@ -82,8 +79,7 @@ class PagesController extends Controller
             ->join('booking', 'users.id', '=', 'booking.user_id')
             ->join('booking_has_vaccination_center', 'booking.id', '=', 'booking_has_vaccination_center.booking_id')
             ->join('vaccination_center', 'booking_has_vaccination_center.vaccination_center_id', '=', 'vaccination_center.id')
-            ->join('vaccination_center_has_vaccination', 'vaccination_center.id', '=', 'vaccination_center_has_vaccination.vaccination_center_id')
-            ->join('vaccination', 'vaccination_center_has_vaccination.vaccination_id', '=', 'vaccination.id')
+            ->join('vaccination', 'booking.vac_id', '=', 'vaccination.id')
             ->select('users.name as name', 'users.surname', 'booking.*', 'vaccination_center.name as vac_center_name', 'vaccination.name as vac_name')
             ->where('isCancelled', '=', '1')
             ->get();
@@ -143,5 +139,12 @@ class PagesController extends Controller
         ->get();
 
         return view('admin.citizens_without_appointments')->with(['all' => $all]);
+    }
+
+    function addVaccineToVacCenter() {
+        $vac_center = DB::table('vaccination_center')->get();
+        $vac = DB::table('vaccination')->get();
+
+        return view('admin.add_vaccination_to_vac_center')->with(['vac_center' => $vac_center])->with(['vac' => $vac]);
     }
 }

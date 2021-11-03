@@ -8,12 +8,15 @@
             background: url(images/home.png);
             background-repeat: no-repeat;
             background-attachment: fixed;
+            background-size: cover;
             background-position: center;
             animation-name: background-move;
             animation-duration: 25s;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
             overflow: hidden;
+            max-width: 100%;
+            height: auto;
         }
 
         @keyframes background-move {

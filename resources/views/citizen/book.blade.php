@@ -16,7 +16,6 @@
         @endforeach
     </select>
     <br>
-    <p>NOTE: Every Vaccination center has different vaccine type</p>
     <label for="vaccination_id">Vaccination</label>
     <!-- Later on I should show vaccine that are in the specific vac_center-->
     <select class="form-control" id="vaccination_id" name="vaccination_id" required focus>

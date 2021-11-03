@@ -32,7 +32,6 @@
         <a href="#" class="w3-bar-item w3-button">Add a post</a>
         <a href="/admin/add/vaccination/center" class="w3-bar-item w3-button">Add a Vaccination Center</a>
         <a href="/admin/add/vaccine" class="w3-bar-item w3-button">Add a Vaccine</a>
-        <a href="#" class="w3-bar-item w3-button">Add Vaccine to a Vaccination Center</a>
         @endif
         <a href="{{ url('/logout') }}" class="w3-bar-item w3-button">Log out</a>
     </div>
