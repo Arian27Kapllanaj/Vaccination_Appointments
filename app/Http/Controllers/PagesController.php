@@ -42,7 +42,19 @@ class PagesController extends Controller
 
     function allCitizensAppointments()
     {
-        $all = DB::table('users')
+        $allAppointments = DB::table('users')
+            ->join('booking', 'users.id', '=', 'booking.user_id')
+            ->join('booking_has_vaccination_center', 'booking.id', '=', 'booking_has_vaccination_center.booking_id')
+            ->join('vaccination_center', 'booking_has_vaccination_center.vaccination_center_id', '=', 'vaccination_center.id')
+            ->join('vaccination', 'booking.vac_id', '=', 'vaccination.id')
+            ->select('users.name as name', 'users.surname', 'booking.*', 'vaccination_center.name as vac_center_name', 'vaccination.name as vac_name')
+            ->where('isDone', '=', '0')
+            ->where('isMissed', '=', '0')
+            ->where('isCancelled', '=', '0')
+            ->where('booking.user_id', '!=', Auth::id())
+            ->count();
+
+            $show = DB::table('users')
             ->join('booking', 'users.id', '=', 'booking.user_id')
             ->join('booking_has_vaccination_center', 'booking.id', '=', 'booking_has_vaccination_center.booking_id')
             ->join('vaccination_center', 'booking_has_vaccination_center.vaccination_center_id', '=', 'vaccination_center.id')
@@ -54,7 +66,7 @@ class PagesController extends Controller
             ->where('booking.user_id', '!=', Auth::id())
             ->get();
 
-        return view('nurse.all_appointments')->with(['all' => $all]);
+        return view('nurse.all_appointments')->with(['allAppointments' => $allAppointments])->with(['show' => $show]);
     }
 
     function allMissed()

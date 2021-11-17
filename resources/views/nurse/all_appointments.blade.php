@@ -30,11 +30,8 @@
 </head>
 <h1>All Appointments</h1>
 
-@if($all->isEmpty())
-<h1>There are not any appointments</h1>
-@else
-
-@foreach($all as $booking)
+@if($allAppointments > 0)
+@foreach($show as $booking)
 <div class="design">
     <p>Name: {{ $booking->name }}</p>
     <p>Surname: {{ $booking->surname }}</p>
@@ -53,5 +50,9 @@
 </div>
 <br>
 @endforeach
+
+@else
+<h1>There are not any appointments</h1>
 @endif
+
 @endsection
